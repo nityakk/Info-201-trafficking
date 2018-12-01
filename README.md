@@ -4,7 +4,7 @@ LINK TO SHINY APP: _________________
 
 Purpose: 
 The goal of our project is to examine and compare different aspects of child labor. We want to answer questions and find trends on why child labor occurs. The three questions that we would like to answer are: 
-1. Which locations have the worst child labor?
+1. Which locations have the worst child labor? Least worst child labor?
 2. What are the percentages of child labor in different industries in an area?
 3. Change in labor rate between two different time periods
 
