@@ -14,6 +14,11 @@ my_server <- function(input, output) {
                                        choices = list("AM", "PM")))
   ##output$state <- renderUI(selectInput("state", label = h3("Pick a state"),
   ##                                     choices = sort(unique(data$State))))
+  output$piechart <- renderPlot({
+    data <- filter(sweat_toil_data, country == input$select)
+    
+  })
+  
   
   output$map <- renderPlot({
     if(is.null(input$time)){
