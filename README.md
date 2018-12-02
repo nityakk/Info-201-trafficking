@@ -4,9 +4,9 @@ LINK TO SHINY APP: _________________
 
 Purpose: 
 The goal of our project is to examine and compare different aspects of child labor. We want to answer questions and find trends on why child labor occurs. The three questions that we would like to answer are: 
-1. Which locations have the worst child labor? Least worst child labor?
-2. What are the percentages of child labor in different industries in an area?
-3. Change in labor rate between two different time periods
+1. Which locations have the highest percentage of child labor? Lowest percentage of child labor?
+2. What are the percentages of child labor in different industries in an area (territory)?
+3. Which countries have children working and studying (given a chosen range of percentages)? 
 
 
 The dataset we will be working with is Sweat and Toil. This data comes from the United States Department of Labor’s (ILAB) three flagship reports: “Findings on the Worst Forms of Child Labor”, “List of Goods Produced by Child Labor or Forced Labor”, and “List of Products Produced by Forced or Indentured Labor”.  ILAB’s mission is to enforce trade commitments, strengthen labor standards, and combat international child labor, forced labor, and human trafficking. This dataset was accessed through the United States Department of Labor Developer Portal. It includes 14 tables containing data from 2015 to 2017 which has information on countries, regions, territories, advancement levels, sectors, goods, statistics, conventions, suggested actions, legal standards, enforcements, and mechanisms.
