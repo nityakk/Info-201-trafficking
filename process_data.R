@@ -1,7 +1,6 @@
 ## setwd("~/Nitya/Au18/INFO-201/info-201-trafficking")
 
-source("~/Nitya/Au18/INFO-201/Info-201-trafficking/keys.R")
-
+source("keys.R")
 
 library(httr)
 library(jsonlite)
