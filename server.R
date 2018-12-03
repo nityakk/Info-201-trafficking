@@ -7,16 +7,15 @@ library(R.utils)
 library(dplyr)
 source("process_data.R")
 my_server <- function(input, output) {
-
+    
   output$time <- renderUI(radioButtons("time", label = h3("Time of Day"),
                                        choices = list("AM", "PM")))
+  data <- filter(sweat_toil_data, percent_of_working_children_industry != "Unavailable")
+  data <- filter(data, percent_of_working_children_industry != "N/A")
   output$country <- renderUI(selectInput("country", label = h3("Select a country:"), 
-                                         choices = choices))
+                                         choices = data$country))
   #choices <- data$country
   output$piechart <- renderPlot({
-    data <- filter(sweat_toil_data, percent_of_working_children_industry != "Unavailable")
-    data <- filter(data, percent_of_working_children_industry != "N/A")
-    choices <- c(data$country)
     industry <- select(data, country, percent_of_working_children_industry) %>%
     filter(country == input$country) %>%
     select(percent_of_working_children_industry)
