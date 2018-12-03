@@ -1,7 +1,7 @@
 ## add pages
+
 my_ui <- fluidPage(
   tabsetPanel(
-    
     tabPanel("Highest and Lowest Child Labor Countries", radioButtons("select", "Choose to view highest or lowest percentage:", 
                                                                       c("Highest" = "pickHigh", "Lowest" = "pickLow")),
              mainPanel(plotOutput("barplot"))),
@@ -10,3 +10,5 @@ my_ui <- fluidPage(
              sidebarPanel(uiOutput("working_studying")),
              mainPanel(plotOutput("world_map"))))
 )
+
+shinyUI(my_ui)
