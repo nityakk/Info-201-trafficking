@@ -14,8 +14,8 @@ my_server <- function(input, output) {
   
   # BARPLOT for question 1. Locations with highest and lowest child labor 
   percent_work_df <- filter(sweat_toil_data, !(percent_of_working_children == "Unavailable"),
-                                              !(percent_of_working_children == "N/A")) %>%
-                     select(country, percent_of_working_children)
+                            !(percent_of_working_children == "N/A")) %>%
+    select(country, percent_of_working_children)
   
   highest_five <- top_n(percent_work_df, 5) #selects the 5 highest percentage and their countries
   lowest_five <- top_n(percent_work_df, -5) #selects the 5 lowest percentage and their countries
@@ -48,12 +48,12 @@ my_server <- function(input, output) {
                       xlab = "Countries", ylab = "Percentage in Decimal", col = "Blue")
   }
 
-  
       output$barplot <- renderPlot({ 
         result <- switch (input$select, 
                           pickHigh = make_bars(highest_five, input, output), # took out output
                           pickLow = make_bars(lowest_five, input, output) # took out output
         )
       }) 
+
 }
 shinyServer(my_server)
