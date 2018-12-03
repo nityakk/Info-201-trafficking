@@ -17,11 +17,6 @@ my_server <- function(input, output) {
 ## first panel
   
 ## second panel
-  
-  output$time <- renderUI(radioButtons("time", label = h3("Time of Day"),
-                                       choices = list("AM", "PM")))
-  ##output$state <- renderUI(selectInput("state", label = h3("Pick a state"),
-  ##          
   output$country <- renderUI(selectInput("country", label = h3("Select a country:"), 
                                          choices = list(data$country)))
   #choices = sort(unique(data$State))))
@@ -46,10 +41,6 @@ my_server <- function(input, output) {
   })
   
 ## third panel
-  
-  ##usa <- map_data("world", c("usa", "Canada"))
-  
-  ##data <- data.table::fread("data/UFOCoords.csv.bz2", stringsAsFactors=FALSE)
   output$world_map <- renderPlot({
     if(is.null(input$working_studying)){
       return()
@@ -65,8 +56,11 @@ my_server <- function(input, output) {
     
     data(wrld_simpl)
     myCountries = wrld_simpl@data$NAME %in% specific_percentages$country
-    plot(wrld_simpl, col = c("gray30", "red")[myCountries+1])
+    plot(wrld_simpl, col = c("gray30", "firebrick1")[myCountries+1])
   })
   
-  # fourth panel
+# fourth panel
+  
 }
+
+shinyServer(my_server)
