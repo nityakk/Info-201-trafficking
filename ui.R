@@ -29,8 +29,8 @@ my_ui <- fluidPage(
              sidebarPanel(uiOutput("working_studying")),
              mainPanel(plotOutput("world_map"))),
     tabPanel("Working children vs Primary completion rate",
-             sidebarPanel(),
-             mainPanel()))
+             mainPanel(plotOutput("scatterplot", click = "plot_click")),
+             verbatimTextOutput("click_info")))
 )
 
 shinyUI(my_ui)
