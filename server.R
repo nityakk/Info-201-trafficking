@@ -68,7 +68,7 @@ my_server <- function(input, output) {
       filter(country == input$country) %>%
       select(percent_of_working_children_services)
     slices <- c(as.double(industry), as.double(agriculture), as.double(services))
-    percent <- (slices/sum(slices)*100)
+    percent <- round((slices/sum(slices)*100), digits = 2)
     labor_slices <- c("Industry", "Agriculture", "Services")
     labor_slices <- paste0(labor_slices, " ", percent, "%")
     pie(slices, labels = labor_slices, main="Percentage of Children in areas of Child Labor")
