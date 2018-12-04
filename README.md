@@ -1,6 +1,6 @@
 # Info-201-Final-Project
 
-LINK TO SHINY APP: _________________
+LINK TO SHINY APP: ![](https://nityakk.shinyapps.io/info-201-trafficking/)
 
 Purpose: 
 The goal of our project is to examine and compare different aspects of child labor. We want to answer questions and find trends on why child labor occurs. The three questions that we would like to answer are: 

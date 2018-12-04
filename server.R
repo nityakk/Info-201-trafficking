@@ -26,18 +26,30 @@ my_server <- function(input, output) {
                             !(percent_of_working_children == "N/A")) %>%
     select(country, percent_of_working_children)
   
-  highest_five <- top_n(percent_work_df, 5) #selects the 5 highest percentage and their countries
-  lowest_five <- top_n(percent_work_df, -5) #selects the 5 lowest percentage and their countries
+  #highest_five <- top_n(percent_work_df, 5) selects the 5 highest percentage and their countries
+  #lowest_five <- top_n(percent_work_df, -5) selects the 5 lowest percentage and their countries
   
-  make_bars <- function(df, input, output) { # took out output
-    result <- barplot(as.matrix(df), main = "Percentage of child labor vs. Countries",
-                      xlab = "Countries", ylab = "Percentage in Decimal", col = "Blue")
-  }
+  # make_bars <- function(df) { #took out input, output because redundant 
+  #   result <- barplot(as.matrix(df), main = "Percentage of child labor vs. Countries",
+  #                     xlab = "Countries", ylab = "Percentage in Decimal", col = "Blue")
+  # }
+  
+  highest_count <- c("Chad" = 0.488, "Sierra Leone" = 0.513, "Cameroon" = 0.562, "Guinea-Bissau" = 0.574, "Somalia" = 0.995)
+  lowest_count <- c("Sri Lanka" = 0.0008, "Jordan" = 0.01, "Costa Rica" = 0.011, "India" = 0.014, "Belize" = 0.016)
+  
+  high_names <-  c("Chad", "Sierra Leone", "Cameroon", "Guinea-Bissau", "Somalia")
+  low_names <- c("Sri Lanka", "Jordan", "Costa Rica", "India", "Belize")
   
   output$barplot <- renderPlot({ 
     result <- switch (input$select, 
-                      pickHigh = make_bars(highest_five, input, output), # took out output
-                      pickLow = make_bars(lowest_five, input, output) # took out output
+                      pickHigh = barplot(highest_count,
+                                         main = "Percentage of child labor vs. Countries",
+                                         xlab = "Countries", ylab = "Percentage in Decimal",
+                                         col = "red"), 
+                      pickLow = barplot(lowest_count,
+                                        main = "Percentage of child labor vs. Countries",
+                                        xlab = "Countries", ylab = "Percentage in Decimal",
+                                        col = "blue")
     )
   }) 
   
@@ -57,7 +69,7 @@ my_server <- function(input, output) {
       filter(country == input$country) %>%
       select(percent_of_working_children_services)
     slices <- c(as.double(industry), as.double(agriculture), as.double(services))
-    percent <- (slices/sum(slices)*100)
+    percent <- round((slices/sum(slices)*100), digits = 2)
     labor_slices <- c("Industry", "Agriculture", "Services")
     labor_slices <- paste0(labor_slices, " ", percent, "%")
     pie(slices, labels = labor_slices, main="Percentage of Children in areas of Child Labor")
