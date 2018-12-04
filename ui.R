@@ -1,5 +1,3 @@
-## add pages
-
 my_ui <- fluidPage(
   tabsetPanel(
     tabPanel(titlePanel("Home"),
@@ -31,7 +29,8 @@ my_ui <- fluidPage(
              sidebarPanel(uiOutput("working_studying")),
              mainPanel(plotOutput("world_map"))),
     tabPanel("Working children vs Primary completion rate",
-             sidebarPanel()))
+             sidebarPanel(),
+             mainPanel()))
 )
 
 shinyUI(my_ui)

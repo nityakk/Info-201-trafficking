@@ -5,9 +5,9 @@ account: nityakk
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 602068
-bundleId: 1737687
+bundleId: 1737839
 url: https://nityakk.shinyapps.io/info-201-trafficking/
-when: 1543880127.18064
+when: 1543885630.92631
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: .RData|README.md
