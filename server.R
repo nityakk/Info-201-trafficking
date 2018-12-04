@@ -19,6 +19,7 @@ my_server <- function(input, output) {
                     label = h3("Select a country:"), 
                     choices = data$country))
   
+  
 ## first panel
   # BARPLOT for question 1. Locations with highest and lowest child labor 
   percent_work_df <- filter(sweat_toil_data, !(percent_of_working_children == "Unavailable"),
@@ -82,7 +83,38 @@ my_server <- function(input, output) {
   })
   
 # fourth panel
+  # percent of working children vs primary completion rate
+  # select % of working children and primary completion rate
   
+  
+  children_data <- filter(sweat_toil_data, 
+                          !(percent_of_working_children == "Unavailable"),
+                          !(primary_completion_rate == "Unavailable")) 
+  children_data <- filter(children_data, !(percent_of_working_children == "N/A"))
+  
+  output$scatterplot <- renderPlot({
+    plot(x = children_data$percent_of_working_children, 
+           y = children_data$primary_completion_rate, 
+           main = "Scatterplot",
+           xlab = "Primary Completion Rate", ylab = "% of Working Children")
+  })
+   country_name <- function(e) {
+     if(is.null(e)) return("NULL\n")
+     country_match <- filter(children_data, 
+                             percent_of_working_children == 0.011) %>% #e$y/100.00) %>%
+       select(country)
+     paste("country:", e$y)
+   }
+   
+#   output$click_info <- renderPrint({
+#     paste(country_name(input$plot_click))
+#  })
+   
+  output$click_info <- renderPrint({
+    nearPoints(children_data,xvar = children_data$percent_of_working_children, 
+               yvar = children_data$primary_completion_rate, 
+               input$plot_click, addDist = FALSE)
+  })
 }
 
 shinyServer(my_server)
