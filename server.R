@@ -104,11 +104,14 @@ my_server <- function(input, output) {
   children_data <- filter(children_data, !(percent_of_working_children == "N/A"))
   
   output$scatterplot <- renderPlotly({
-    plot_ly(data = children_data,
+    
+     plot_ly(data = children_data,
             x = ~as.numeric(percent_of_working_children),
             y = ~as.numeric(primary_completion_rate),
             text = ~paste('Country: ', country),
-            mode = "markers", type = "scatter")
+            mode = "markers", type = "scatter") %>% 
+      layout(xaxis = list(title = "Primary Completion Rate"), 
+             yaxis = list(title = "Percentage of Working Children"))
     
   })
 }
