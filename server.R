@@ -103,29 +103,12 @@ my_server <- function(input, output) {
                           !(primary_completion_rate == "Unavailable")) 
   children_data <- filter(children_data, !(percent_of_working_children == "N/A"))
   
-  output$scatterplot <- renderPlot({
-    plot(x = children_data$percent_of_working_children, 
-           y = children_data$primary_completion_rate, 
-           main = "Scatterplot",
-           xlab = "Primary Completion Rate", ylab = "% of Working Children")
-  })
-  
-   country_name <- function(e) {
-     if(is.null(e)) return("NULL\n")
-     country_match <- filter(children_data, 
-                             percent_of_working_children == 0.011) %>% #e$y/100.00) %>%
-       select(country)
-     paste("country:", e$y)
-   }
-   
-#   output$click_info <- renderPrint({
-#     paste(country_name(input$plot_click))
-#  })
-   
-  output$click_info <- renderPrint({
-    nearPoints(children_data,xvar = children_data$percent_of_working_children, 
-               yvar = children_data$primary_completion_rate, 
-               input$plot_click, addDist = FALSE)
+  output$scatterplot <- renderPlotly({
+    plot_ly(data = children_data,
+            x = ~as.numeric(percent_of_working_children),
+            y = ~as.numeric(primary_completion_rate),
+            text = ~paste('Name: ', country),
+            mode = "markers", type = "scatter")
   })
 }
 

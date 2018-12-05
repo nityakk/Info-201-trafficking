@@ -1,3 +1,5 @@
+library(plotly)
+
 my_ui <- fluidPage(
   tabsetPanel(
     tabPanel(titlePanel("Home"),
@@ -29,7 +31,7 @@ my_ui <- fluidPage(
              sidebarPanel(uiOutput("working_studying")),
              mainPanel(plotOutput("world_map"))),
     tabPanel("Working children vs Primary completion rate",
-             mainPanel(plotOutput("scatterplot", click = "plot_click")),
+             mainPanel(plotlyOutput("scatterplot")),
              verbatimTextOutput("click_info")))
 )
 
