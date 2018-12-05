@@ -1,6 +1,6 @@
 # Info-201-Final-Project
 
-LINK TO SHINY APP: ![](https://ashlealau.shinyapps.io/Info-201-childlabor/)
+LINK TO SHINY APP: [](https://ashlealau.shinyapps.io/Info-201-childlabor/)
 
 Purpose: 
 The goal of our project is to examine and compare different aspects of child labor. We want to answer questions and find trends on why child labor occurs. The three questions that we would like to answer are: 
