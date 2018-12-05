@@ -107,8 +107,9 @@ my_server <- function(input, output) {
     plot_ly(data = children_data,
             x = ~as.numeric(percent_of_working_children),
             y = ~as.numeric(primary_completion_rate),
-            text = ~paste('Name: ', country),
+            text = ~paste('Country: ', country),
             mode = "markers", type = "scatter")
+    
   })
 }
 
