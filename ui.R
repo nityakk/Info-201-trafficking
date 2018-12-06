@@ -23,16 +23,20 @@ my_ui <- fluidPage(
          sidebarPanel(radioButtons("select", 
                                   h3("Choose to view highest or lowest percentage:"), 
                                   c("Highest" = "pickHigh", "Lowest" = "pickLow"))),
-         mainPanel(plotOutput("barplot"))),
+         mainPanel(plotOutput("barplot")),
+         textOutput("figure1")),
     tabPanel("Percent child labor per area",
              sidebarPanel(uiOutput("country")),
-             mainPanel(plotOutput("piechart"))),
+             mainPanel(plotOutput("piechart")),
+             textOutput("figure2")),
     tabPanel("Percent of children working and studying",
              sidebarPanel(uiOutput("working_studying")),
-             mainPanel(plotOutput("world_map"))),
+             mainPanel(plotOutput("world_map")),
+             textOutput("figure3")),
     tabPanel("Working children vs Primary completion rate",
              mainPanel(plotlyOutput("scatterplot")),
-             verbatimTextOutput("click_info")))
+             textOutput("figure4"))
+    )
 )
 
 shinyUI(my_ui)

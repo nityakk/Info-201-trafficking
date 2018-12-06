@@ -47,6 +47,12 @@ my_server <- function(input, output) {
                                         col = "blue")
     )
   }) 
+  output$figure1 <- renderText({
+    paste("These visualizations identify which countries have the highest and lowest percentages of child labor.
+          This allows efforts to combat child labor to be concentrated to areas that need it the most.
+          For example, Somalia is one location where efforts should be concentrated because it has the
+          highest percentage of child labor.")
+  })
   
 ## second panel
   ## PIE CHART: Percent child labor per area
@@ -73,6 +79,14 @@ my_server <- function(input, output) {
     pie(slices, labels = labor_slices, main="Percentage of Children in areas of Child Labor")
   })
   
+  output$figure2 <- renderText({
+    paste("This visualization displays the distribution of child labor throughout the
+          various types of industries. This information is displayed by country.
+          Agriculture appears to be the most common industry to exploit children for
+          labor. Using this information, efforts can be concentrated on certain areas of
+          industry.")
+  })
+  
 ## third panel
   ## WORLD MAP: Percent of children working and studying
   output$world_map <- renderPlot({
@@ -91,6 +105,13 @@ my_server <- function(input, output) {
     data(wrld_simpl)
     myCountries = wrld_simpl@data$NAME %in% specific_percentages$country
     plot(wrld_simpl, col = c("gray30", "firebrick1")[myCountries+1])
+  })
+  
+  output$figure3 <- renderText({
+    paste("This visualization displays which countires have children working and 
+          studying at the same time. From this, it can be determined how education
+          and child labor are related. This also highlights countries that have
+          lower levels of education, so efforts can be targeted at these places.")
   })
   
 # fourth panel
@@ -112,7 +133,15 @@ my_server <- function(input, output) {
             mode = "markers", type = "scatter") %>% 
       layout(xaxis = list(title = "Primary Completion Rate"), 
              yaxis = list(title = "Percentage of Working Children"))
-    
+  })
+  
+  output$figure4 <- renderText({
+    paste("This visualization shows the correlation between child labor
+          percentages and the completion of primary school. The negative
+          corrolation displayed in this plot suggests that education
+          has a direct effect on the percentage of child labor. This
+          suggests that efforts to increase education may effectively
+          decrease percentages of child labor.")
   })
 }
 
